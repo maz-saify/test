@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="default" extends="struts-default">
+<action name="login" class="com.zensar.project.actions.LoginCheck">
+<result name="success">successPage.jsp</result>
+<result name="error">errorPage.jsp</result>
+</action>
+<action name="hello" class="com.zensar.project.actions.HelloAction" method="execute111">
+<result name="success">successPage.jsp</result>
+</action>
+</package>
+	
+</struts>

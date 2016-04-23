@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="ResponseInterceptor" class="com.zensar.project.interceptors.ResponseInterceptor"></interceptor>
+			<interceptor-stack name="CustomStack1">
+				<interceptor-ref name="ResponseInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 3.Define a custom stack in interceptor tag and make it default so it can be applied on all action -->
+		<default-interceptor-ref name="CustomStack1"></default-interceptor-ref>
+	
+	
+	
+		<action name="login" class="com.zensar.project.actions.LoginCheck">
+		
+		<!-- 2.if we have not made our custom stack as default, ie different interceptors stack for each action tag then -->
+		<!-- <interceptor-ref name="CustomStack1"></interceptor-ref> -->
+		
+		<!-- 1.if we have not made a custom stack. Also we have to manually run default stack else default will not run -->
+		<!-- <interceptor-ref name="ResponseInterceptor"></interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref> -->
+		
+			<result name="success">successPage.jsp</result>
+			<result name="error">errorPage.jsp</result>
+		</action>
+		<action name="hello" class="com.zensar.project.actions.HelloAction"
+			method="execute111">
+			<result name="success">successPage.jsp</result>
+		</action>
+	</package>
+
+</struts>
